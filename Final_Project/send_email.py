@@ -1,19 +1,25 @@
 import smtplib
+from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-smtp_ssl_host = 'smtp.gmail.com'  # smtp.mail.yahoo.com
-smtp_ssl_port = 465
-username = 'USERNAME or EMAIL ADDRESS'
-password = 'PASSWORD'
-sender = 'ME@EXAMPLE.COM'
-targets = ['HE@EXAMPLE.COM', 'SHE@EXAMPLE.COM']
+mail_content = '''Hello,
+This is a simple mail. There is only text, no attachments are there The mail is sent using Python SMTP library.
+Thank You'''
 
-msg = MIMEText('Hi, how are you today?')
-msg['Subject'] = 'Hello'
-msg['From'] = sender
-msg['To'] = ', '.join(targets)
-
-server = smtplib.SMTP_SSL(smtp_ssl_host, smtp_ssl_port)
-server.login(username, password)
-server.sendmail(sender, targets, msg.as_string())
-server.quit()
+#The mail addresses and password
+sender_address = 'hojun1105@gmail.com'
+sender_pass = 'hrljmicrfodkcpgg'
+receiver_address = 'hojun1105@gmail.com'
+#Setup the MIME
+message = MIMEMultipart()
+message['From'] = sender_address
+message['To'] = receiver_address
+message['Subject'] = 'A test mail sent by Python. It has an attachment.'   #The subject line
+#The body and the attachments for the mail
+message.attach(MIMEText(mail_content, 'plain'))
+#Create SMTP session for sending the mail
+session = smtplib.SMTP('smtp.gmail.com', 587) #use gmail with port
+session.starttls() #enable security
+session.login(sender_address, sender_pass) #login with mail_id and password
+text = message.as_string()
+session.sendmail(sender_address, receiver_address, text)
