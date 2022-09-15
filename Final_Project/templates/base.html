@@ -44,6 +44,11 @@
                             vid_index
                         </a>
                         {% endif %}
+                        {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('main.email') }}" class="navbar-item">
+                            email-test
+                        </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
