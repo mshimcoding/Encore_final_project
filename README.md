@@ -3,5 +3,9 @@
 #### Team Member : Hyeri Hwang, Jahee Kim , Moonchul shim, Hojun Jeong
 
 - <h5> Final_Project
+- <h5> Dataset
+- Data Collection
+- Data label
+- Data form
 - <h5> fall_stand_1.ipynb
 - <h5> etc
