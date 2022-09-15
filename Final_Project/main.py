@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, flash, Response
 from webcam import VideoCamera
 from flask_login import login_required, current_user
 from __init__ import create_app, db
+from send_email import email_warning
 
 # our main blueprint
 main = Blueprint('main', __name__)
@@ -22,6 +23,13 @@ def index():
 @login_required
 def profile():
     return render_template('profile.html', name=current_user.name)
+
+@main.route('/email') ## warning email sender
+def email():
+    email_warning(id=current_user.email)
+    return render_template('profile.html', name=current_user.name)
+
+
 
 @main.route('/video_feed')
 def video_feed():
