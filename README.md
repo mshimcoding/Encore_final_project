@@ -2,6 +2,6 @@
 
 #### Team Member : Hyeri Hwang, Jahee Kim , Moonchul shim, Hojun Jeong
 
-- <h5> FinalProject.
+- <h5> Final_Project
 - <h5> fall_stand_1.ipynb
 - <h5> etc
