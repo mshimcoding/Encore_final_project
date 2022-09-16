@@ -27,7 +27,7 @@ def profile():
 @main.route('/email') ## warning email sender
 def email():
     email_warning(id=current_user.email)
-    return render_template('profile.html', name=current_user.name)
+    return render_template('email_sent.html')
 
 
 
