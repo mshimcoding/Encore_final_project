@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, flash, Response
 from webcam import VideoCamera
+from fakecam import VideoCamera2
 from flask_login import login_required, current_user
 from __init__ import create_app, db
 from send_email import email_warning
@@ -8,6 +9,7 @@ from send_email import email_warning
 main = Blueprint('main', __name__)
 
 video_stream = VideoCamera()
+fake_stream = VideoCamera2()
 
 def gen_frames(webcam):  # generate frame by frame from webcam.py
     while True:
@@ -40,6 +42,17 @@ def video_feed():
 def vid_index():
     """Video streaming home page."""
     return render_template('vid_index.html')
+
+##--------------------------------- fake indexes
+@main.route('/f_video_feed')
+def f_video_feed():
+    return Response(gen_frames(fake_stream), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@main.route('/fake_index')
+def fake_index():
+    """Video streaming home page."""
+    return render_template('fake_index.html')
+
 
 app = create_app() # we initialize our flask app using the __init__.py function
 if __name__ == '__main__':
