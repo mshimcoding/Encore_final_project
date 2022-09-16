@@ -43,12 +43,17 @@
                         {% endif %}
                         {% if current_user.is_authenticated %}
                         <a href="{{ url_for('main.vid_index') }}" class="navbar-item">
-                            B&W CamTest
+                            흑백 CamTest
                         </a>
                         {% endif %}
                         {% if current_user.is_authenticated %}
                         <a href="{{ url_for('main.email') }}" class="navbar-item">
                             email-test
+                        </a>
+                        {% endif %}
+                        {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('main.fake_index') }}" class="navbar-item">
+                            Live Service
                         </a>
                         {% endif %}
                     </div>
