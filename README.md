@@ -27,4 +27,4 @@
   
   
  
-  <h3> 코드들의 대부분은 mshim_coding_web branch아래 있다
+  <h3> 코드들의 대부분은 mshimcoding_web branch아래 있다
